@@ -11,15 +11,37 @@ def cadStudent():
     Returns:
         dict: Retorna um dicionario
     """
-    name = input('Digite o nome: ')
-    registration = print(f'Matricula: {registrationNum()}')
-    birthday = input('Digite a data de nascimento: ')
-    gender = input('Digite o genero: ')
-    address = input('Digite o Endereco: ')
-    cel = input('Digite o telefone (apenas numeros): ')
-    email = input('Digite o Email: ')
-    return {'Nome': name, 'Matricula': registration, 'DataAniversario': birthday, 'genero': gender, 'Endereco': address, 'Telefone': cel, 'Email': email}
+    _ = True
+    idReg = registrationNum()
+    while _:
+        try:
+            name = input('Digite o nome: ')
+            noneWord(name)
+            print(f'Matricula: {idReg}')
+            birthday = input('Digite a data de nascimento: ')
+            noneWord(birthday)
+            gender = input('Digite o genero: ')
+            noneWord(gender)
+            address = input('Digite o Endereco: ')
+            noneWord(address)
+            print('a')
+            cel = input('Digite o telefone (apenas numeros): ')
+            noneWord(cel)
+            email = input('Digite o Email: ')
+            noneWord(email)
+        except:
+            system('cls')
+            # print(TypeError())
+            print('Digite uma palavra')
+            continue
+        else:
+            _ = False
+    return {'Nome': name, 'Matricula': idReg, 'DataAniversario': birthday, 'genero': gender, 'Endereco': address, 'Telefone': cel, 'Email': email}
 
+
+def noneWord(args):
+    if args == '':
+        raise
 
 def registrationNum():
     """Gera uma sequencia de 8 numeros e uma letra aleatoria para a matricula do aluno.
@@ -31,7 +53,7 @@ def registrationNum():
     # e o os numeros sao definidos pelo 'string.digits')
     num = ''.join(random.choices(string.digits, k= 8))
     letterUpper = random.choice(string.ascii_uppercase) # ascii_uppercase gera letras maiusculas
-    registrationId = num + letterUpper 
+    registrationId = num + '-' + letterUpper 
     return registrationId
     
 
