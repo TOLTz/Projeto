@@ -1,5 +1,5 @@
-from tinydb import TinyDB
+from tinydb import TinyDB, Query
 
 def addData(file, dict):
-    new = TinyDB(file, )
+    new = TinyDB(file, indent=4)
     new.insert(dict)
