@@ -6,7 +6,7 @@ teacher = [] # lista usada para armazenar os dados dos professores, se der tempo
 
 
 def cadTeacher():
-    """ Cadastra um novo aluno
+    """ Cadastra um novo professor
 
     Returns:
         dict: Retorna um dicionario
