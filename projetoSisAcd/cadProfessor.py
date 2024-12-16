@@ -1,6 +1,8 @@
 from os import system
 import string
 import random
+from bd import addData
+
 
 teacher = [] # lista usada para armazenar os dados dos professores, se der tempo transformar em banco de dados mais complexo
 
@@ -40,12 +42,12 @@ def cadTeacher():
 
 
 def registrationNum():
-    """Gera uma sequencia de 8 numeros e uma letra aleatoria para a matricula.
+    """Gera uma sequencia de 6 numeros e uma letra aleatoria para a matricula.
 
     Returns:
         Str: retorna uma string com a matricula.
     """
-    # gera uma sequencia de 8 numreos aleatorios (a quantidade de numeros e definida pelo 'k')
+    # gera uma sequencia de 6 numreos aleatorios (a quantidade de numeros e definida pelo 'k')
     # e o os numeros sao definidos pelo 'string.digits')
     num = ''.join(random.choices(string.digits, k= 6))
     letterUpper = random.choice(string.ascii_uppercase) # ascii_uppercase gera letras maiusculas
@@ -61,13 +63,13 @@ def registration():
     cadStudent(). Alem de fazer a verificacao se o professor esta com os dados corretos.
     """
     _ = True
-    _student = cadTeacher()
+    _teacher = cadTeacher()
     while _:
-        print(_student)
+        print(_teacher)
         confirm = input('confirmar? (S/N): ')
         if confirm.upper() == 'S':
             system('cls')
-            teacher.append(_student)
+            addData('Teacher.json', _teacher)
             _ = False
             return print('salvo com sucesso')
         elif confirm.upper() == 'N':

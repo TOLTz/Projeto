@@ -1,6 +1,5 @@
 from tinydb import TinyDB
 
-db = TinyDB('database.json')
-
-def addData(args):
-    db.insert(args)
+def addData(file, dict):
+    new = TinyDB(file, )
+    new.insert(dict)

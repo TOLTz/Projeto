@@ -42,7 +42,7 @@ def confirmSup():
         print(_supplies)
         confirm = input('Deseja confirmar? \n[S] [N]: ')
         if confirm.upper() == 'S':
-            addData(_supplies)
+            addData('discplinas.json', _supplies)
             print('Cadastro realizado com sucesso')
             retry = input('quer realizar outro? \n[S] [N]: ')
             if retry.upper() == 'N':

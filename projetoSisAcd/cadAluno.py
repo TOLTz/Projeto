@@ -1,6 +1,7 @@
 from os import system
 import string
 import random
+from bd import addData
 
 student = [] # lista usada para armazenar os dados dos alunos, se der tempo transformar em banco de dados mais complexo
 
@@ -24,7 +25,6 @@ def cadStudent():
             noneWord(gender)
             address = input('Digite o Endereco: ')
             noneWord(address)
-            print('a')
             cel = input('Digite o telefone (apenas numeros): ')
             noneWord(cel)
             email = input('Digite o Email: ')
@@ -64,11 +64,12 @@ def registration():
     _ = True
     _student = cadStudent()
     while _:
+        system('cls')
         print(_student)
         confirm = input('confirmar? (S/N): ')
         if confirm.upper() == 'S':
             system('cls')
-            student.append(_student)
+            addData('Aluno.json', _student)
             _ = False
             return print('salvo com sucesso')
         elif confirm.upper() == 'N':
