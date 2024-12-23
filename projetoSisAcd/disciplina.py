@@ -2,8 +2,8 @@ import string
 from os import system
 import random 
 from bd import addData
+from tinydb import TinyDB
 
-supplies = []
 
 def cadSupplies():
     idSupplies = disciplineCode()
@@ -12,14 +12,13 @@ def cadSupplies():
         try:
             name = input('Qual o nome da disciplina? ')
             workLoad = input('Qual a carga horaria? ')
-            teacherSupplies = input('Qual professor responsavel? ')
             
         except:
             system('cls')
             print('Digite uma palavra')
         
         else:
-            return {'Disciplina': name,'Codigo': idSupplies, 'Carga Horaria': workLoad, 'Professor': teacherSupplies}
+            return {'Disciplina': name,'Codigo': idSupplies, 'Carga Horaria': workLoad, 'Professor': ''}
         
 def disciplineCode():
     """Gera uma sequencia de 5 numeros e uma letra aleatoria para a matricula.
@@ -42,7 +41,7 @@ def confirmSup():
         print(_supplies)
         confirm = input('Deseja confirmar? \n[S] [N]: ')
         if confirm.upper() == 'S':
-            addData('discplinas.json', _supplies)
+            addData('disciplinas.json', _supplies)
             print('Cadastro realizado com sucesso')
             retry = input('quer realizar outro? \n[S] [N]: ')
             if retry.upper() == 'N':
@@ -57,4 +56,9 @@ def confirmSup():
             else:
                 continue
 
-confirmSup()
+# confirmSup()
+
+supplies = TinyDB('disciplinas.json')
+
+
+supplies.update({'Professor': 'Joao'}, doc_ids=[1])

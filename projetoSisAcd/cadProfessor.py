@@ -70,12 +70,25 @@ def registration():
         if confirm.upper() == 'S':
             system('cls')
             addData('Teacher.json', _teacher)
-            _ = False
-            return print('salvo com sucesso')
+            retry = input('quer tentar novament? ')
+            if retry.upper() == 'N':
+                _ = False
+                system('cls')
+                print('ok, até mais!')
+            else:
+                system('cls')
+                continue
         elif confirm.upper() == 'N':
             system('cls')
             _ = False
-            return print('cancelado!')
+            print('cancelado!')
+            retry = input('quer tentar novament? ')
+            if retry.upper() == 'N':
+                system('cls')
+                print('ok, até mais!')
+            else:
+                system('cls')
+                continue
         else:
             print('opcao invalida')
             continue

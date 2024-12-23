@@ -2,8 +2,7 @@ from os import system
 import string
 import random
 from bd import addData
-
-student = [] # lista usada para armazenar os dados dos alunos, se der tempo transformar em banco de dados mais complexo
+from tinydb import Query, TinyDB
 
 
 def cadStudent():
@@ -70,17 +69,27 @@ def registration():
         if confirm.upper() == 'S':
             system('cls')
             addData('Aluno.json', _student)
-            _ = False
-            return print('salvo com sucesso')
+            print('salvo com sucesso')
+            retry = input('quer tentar novament? ')
+            if retry.upper() == 'N':
+                _ = False
+                system('cls')
+                print('ok, até mais!')
+            else:
+                system('cls')
+                continue
         elif confirm.upper() == 'N':
             system('cls')
             _ = False
-            return print('cancelado!')
+            print('cancelado!')
+            retry = input('quer tentar novament? ')
+            if retry.upper() == 'N':
+                _ = False
+                system('cls')
+                print('ok, até mais!')
+            else:
+                system('cls')
+                continue
         else:
             print('opcao invalida')
             continue
-            
-            
-registration()
-        
-    

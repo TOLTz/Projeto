@@ -4,12 +4,22 @@ import random
 from bd import addData
 
 def team():
+    """ Essa função serve para criar uma turma, ainda sem os alunos
+
+    Returns:
+        _type_: dict
+    """
     team = input("Digite o nome da turma: ")
     idTeam = code()
     time = input('Qual periodo? (Matutino/Vespertino/Noturno) ')
     return {'nome da turma': team, 'id da turma': idTeam, 'Periodo': time}
 
 def addStudant():
+    """Esta função cria uma lista com Alunos 
+
+    Returns:
+        _type_: list
+    """
     studentList = []
     _ = True
     while _:
@@ -23,7 +33,7 @@ def addStudant():
     return studentList    
     
 def code():
-    """Gera uma sequencia de 4 numeros e uma letra aleatoria para a matricula.
+    """Gera uma sequencia de 4 numeros e uma letra aleatoria para o código de turma.
 
     Returns:
         Str: retorna uma string com o codigo.
@@ -36,6 +46,11 @@ def code():
     return registrationId
 
 def unite():
+    """Esta função une as duas funções anteriores
+
+    Returns:
+        _type_: dict
+    """
     teamdata = team()
     studant = addStudant()
     teamdata['Alunos'] = studant
@@ -43,6 +58,11 @@ def unite():
     
     
 def registration():
+    """Esta função adiciona as informações da turma e alunos ao Banco de Dados.
+
+    Returns:
+        _type_: _description_
+    """
     _ = True
     while _:
         _team = unite()
