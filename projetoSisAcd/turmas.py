@@ -57,7 +57,7 @@ def unite():
     return teamdata
     
     
-def registration():
+def registrationClass():
     """Esta função adiciona as informações da turma e alunos ao Banco de Dados.
 
     Returns:
@@ -85,4 +85,3 @@ def registration():
             else:
                 continue
 
-registration()

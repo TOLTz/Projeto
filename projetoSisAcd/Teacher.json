@@ -1,0 +1,14 @@
+{
+    "_default": {
+        "1": {
+            "Nome": "Lucas Moura",
+            "Matricula": "A314784",
+            "DataAniversario": "07/10/1922",
+            "genero": "M",
+            "Endereco": "Rua Getulio Vargas N04",
+            "Telefone": "6790017719",
+            "Email": "lulumomo@hotmail.com",
+            "disciplina": ""
+        }
+    }
+}

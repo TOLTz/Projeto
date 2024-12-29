@@ -71,13 +71,6 @@ def registration():
             addData('Aluno.json', _student)
             print('salvo com sucesso')
             retry = input('quer tentar novament? ')
-            if retry.upper() == 'N':
-                _ = False
-                system('cls')
-                print('ok, até mais!')
-            else:
-                system('cls')
-                continue
         elif confirm.upper() == 'N':
             system('cls')
             _ = False

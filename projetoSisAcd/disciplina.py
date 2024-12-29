@@ -50,7 +50,7 @@ def confirmSup():
                 continue
         else:
             print('Cadastro cancelado!')
-            retry = input('quer tentar novamente? \n[S] [N]: ')
+            
             if retry.upper() == 'N':
                 return print('Ok, até mais!')
             else:
@@ -58,7 +58,3 @@ def confirmSup():
 
 # confirmSup()
 
-supplies = TinyDB('disciplinas.json')
-
-
-supplies.update({'Professor': 'Joao'}, doc_ids=[1])

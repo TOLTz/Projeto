@@ -58,7 +58,7 @@ def noneWord(args):
     if args == '':
         raise
 
-def registration():
+def registrationTeacher():
     """Adiciona um novo professor ao sistema, com os dados fornecidos pela funcao
     cadStudent(). Alem de fazer a verificacao se o professor esta com os dados corretos.
     """
@@ -93,4 +93,3 @@ def registration():
             print('opcao invalida')
             continue
         
-registration()
