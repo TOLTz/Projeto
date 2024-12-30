@@ -12,25 +12,9 @@ def team():
     team = input("Digite o nome da turma: ")
     idTeam = code()
     time = input('Qual periodo? (Matutino/Vespertino/Noturno) ')
-    return {'nome da turma': team, 'id da turma': idTeam, 'Periodo': time}
+    return {'nomeDaTurma': team, 'idDaTurma': idTeam, 'Periodo': time, 'alunos': []}
 
-def addStudant():
-    """Esta função cria uma lista com Alunos 
-
-    Returns:
-        _type_: list
-    """
-    studentList = []
-    _ = True
-    while _:
-        system('cls')
-        student = input("Digite o nome do aluno: ")
-        studentList.append(student)
-        confirm = input("Deseja adicionar mais um aluno? (s/n): ")
-        if confirm.lower() == 'n':
-            _ = False
-            system('cls')
-    return studentList    
+ 
     
 def code():
     """Gera uma sequencia de 4 numeros e uma letra aleatoria para o código de turma.
@@ -44,17 +28,6 @@ def code():
     letterUpper = random.choice(string.ascii_uppercase) # ascii_uppercase gera letras maiusculas
     registrationId = letterUpper + num 
     return registrationId
-
-def unite():
-    """Esta função une as duas funções anteriores
-
-    Returns:
-        _type_: dict
-    """
-    teamdata = team()
-    studant = addStudant()
-    teamdata['Alunos'] = studant
-    return teamdata
     
     
 def registrationClass():
@@ -65,7 +38,7 @@ def registrationClass():
     """
     _ = True
     while _:
-        _team = unite()
+        _team = team()
         system('cls')
         print(_team)
         confirm = input('Deseja confirmar? \n[S] [N]: ')
@@ -84,4 +57,3 @@ def registrationClass():
                 return print('Ok, até mais!')
             else:
                 continue
-
