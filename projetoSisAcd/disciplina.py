@@ -2,7 +2,7 @@ import string
 from os import system
 import random 
 from bd import addData
-from tinydb import TinyDB
+from tinydb import TinyDB, Query
 
 
 def cadSupplies():
@@ -58,3 +58,54 @@ def confirmSup():
 
 # confirmSup()
 
+def searchSupplies():
+    query = Query()
+    Supplies = TinyDB('disciplinas.json')
+    chooseItem = input('deseja pesquisar por: \nNome (N), Código (C) ou Professor (P)? ')
+    if chooseItem.upper() == 'N':
+        searchName = input('digite o nome da disciplina: ')
+        searchName = searchName.capitalize()
+        searched = Supplies.search(query.Disciplina.search(searchName))
+        if searched == []:
+            print('Disciplina nao encontrada')
+            retry = input('quer tentar dnv? (s/n)')
+            if retry.upper() == 'S':
+                system('cls')
+                return searchSupplies()
+            else:
+                return print('Ok, até mais!')
+        else:
+            print(searched)
+    elif chooseItem.upper() == 'C':
+        searchCode = input('digite o código da disciplina: ')
+        searchCode = searchCode.upper()
+        searched = Supplies.search(query.Codigo.search(searchCode))
+        if searched == []:
+            print('Disciplina nao encontrada')
+            retry = input('quer tentar dnv? (s/n)')
+            if retry.upper() == 'S':
+                system('cls')
+                return searchSupplies()
+            else:
+                return print('Ok, até mais!')
+        else:
+            print(searched)
+    elif chooseItem.upper() == 'P':
+        searchTeacher = input('digite o nome do Professor: ')
+        searchTeacher = searchTeacher.capitalize()
+        searched = Supplies.search(query.Professor.search(searchTeacher))
+        if searched == []:
+            print('Disciplina nao encontrada')
+            retry = input('quer tentar dnv? (s/n)')
+            if retry.upper() == 'S':
+                system('cls')
+                return searchSupplies()
+            else:
+                return print('Ok, até mais!')
+        else:
+            print(searched)
+    else:
+        print('opcao invalida')
+        return searchSupplies()
+    
+searchSupplies()

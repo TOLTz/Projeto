@@ -2,6 +2,7 @@ from os import system
 import string
 import random
 from bd import addData
+from tinydb import TinyDB, Query
 
 
 teacher = [] # lista usada para armazenar os dados dos professores, se der tempo transformar em banco de dados mais complexo
@@ -93,3 +94,37 @@ def registrationTeacher():
             print('opcao invalida')
             continue
         
+def searchTeacher():
+    query = Query()
+    teacher = TinyDB('Teacher.json')
+    chooseItem = input('deseja pesquisar por: \nNome (N), Matricula (M) ou Disciplina (D)? ')
+    if chooseItem.upper() == 'N':
+        searchName = input('digite o nome do Professor: ')
+        searchName = searchName.capitalize()
+        searched = teacher.search(query.Nome.search(searchName))
+        if searched == []:
+            print('Professor nao encontrado')
+            return searchTeacher()
+        else:
+            print(searched)
+    elif chooseItem.upper() == 'M':
+        searchRegistration = input('digite a matricula do Professor: ')
+        searchRegistration = searchRegistration.upper()
+        searched = teacher.search(query.Matricula.search(searchRegistration))
+        if searched == []:
+            print('Professor nao encontrado')
+            return searchTeacher()
+        else:
+            print(searched)
+    elif chooseItem.upper() == 'D':
+        searchSupplies = input('digite a Disciplina do Professor: ')
+        searchSupplies = searchSupplies.upper()
+        searched = teacher.search(query.disciplina.search(searchSupplies))
+        if searched == []:
+            print('Professor nao encontrado')
+            return searchTeacher()
+        else:
+            print(searched)
+    else:
+        print('opcao invalida')
+        return searchTeacher()

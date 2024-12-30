@@ -86,3 +86,48 @@ def registration():
         else:
             print('opcao invalida')
             continue
+
+def searchStudent():
+    query = Query()
+    student = TinyDB('Aluno.json')
+    chooseItem = input('deseja pesquisar por: \nNome (N), Matricula (M) ou Turma (T)? ')
+    if chooseItem.upper() == 'N':
+        searchName = input('digite o nome do aluno: ')
+        searchName = searchName.capitalize()
+        searched = student.search(query.Nome.search(searchName))
+        if searched == []:
+            print('aluno nao encontrado')
+            return searchStudent()
+        else:
+            print(searched)
+    elif chooseItem.upper() == 'M':
+        searchRegistration = input('digite a matricula do aluno: ')
+        searchRegistration = searchRegistration.upper()
+        searched = student.search(query.Matricula.search(searchRegistration))
+        if searched == []:
+            print('aluno nao encontrado')
+            retry = input('quer tentar dnv? (s/n)')
+            if retry.upper() == 'S':
+                system('cls')
+                return searchStudent()
+            else:
+                return print('Ok, até mais!')
+        else:
+            print(searched)
+    elif chooseItem.upper() == 'T':
+        searchteam = input('digite a turma do aluno: ')
+        searchteam = searchteam.upper()
+        searched = student.search(query.Turma.search(searchteam))
+        if searched == []:
+            print('aluno nao encontrado')
+            retry = input('quer tentar dnv? (s/n)')
+            if retry.upper() == 'S':
+                system('cls')
+                return searchStudent()
+            else:
+                return print('Ok, até mais!')
+        else:
+            print(searched)
+    else:
+        print('opcao invalida')
+        return searchStudent()
