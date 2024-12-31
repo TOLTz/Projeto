@@ -26,16 +26,15 @@ def cadStudent():
             noneWord(address)
             cel = input('Digite o telefone (apenas numeros): ')
             noneWord(cel)
-            email = input('Digite o Email: ')
+            email = input('Digite o Email: ').lower()
             noneWord(email)
         except:
             system('cls')
-            # print(TypeError())
             print('Digite uma palavra')
             continue
         else:
             _ = False
-    return {'Nome': name, 'Matricula': idReg, 'DataAniversario': birthday, 'genero': gender, 'Endereco': address, 'Telefone': cel, 'Email': email}
+    return {'Nome': name.replace(' ', '_'), 'Matricula': idReg, 'DataAniversario': birthday, 'genero': gender, 'Endereco': address, 'Telefone': cel, 'Email': email, 'Status': '', 'Turma': ''}
 
 
 def noneWord(args):
@@ -70,12 +69,19 @@ def registration():
             system('cls')
             addData('Aluno.json', _student)
             print('salvo com sucesso')
-            retry = input('quer tentar novament? ')
+            retry = input('quer tentar dnv? ')
+            if retry.upper() == 'N':
+                _ = False
+                system('cls')
+                print('ok, até mais!')
+            else:
+                system('cls')
+                continue
         elif confirm.upper() == 'N':
             system('cls')
             _ = False
             print('cancelado!')
-            retry = input('quer tentar novament? ')
+            retry = input('quer tentar dnv? ')
             if retry.upper() == 'N':
                 _ = False
                 system('cls')
@@ -93,11 +99,18 @@ def searchStudent():
     chooseItem = input('deseja pesquisar por: \nNome (N), Matricula (M) ou Turma (T)? ')
     if chooseItem.upper() == 'N':
         searchName = input('digite o nome do aluno: ')
+        searchName = searchName.replace(' ', '_')
         searchName = searchName.capitalize()
         searched = student.search(query.Nome.search(searchName))
         if searched == []:
             print('aluno nao encontrado')
-            return searchStudent()
+            retry = ('Gostaria de tentar dnv?')
+            if retry.upper() == 'N':
+                system('cls')
+                print('ok, até mais!')
+            else:
+                system('cls')
+                return searchStudent()
         else:
             print(searched)
     elif chooseItem.upper() == 'M':
@@ -131,3 +144,5 @@ def searchStudent():
     else:
         print('opcao invalida')
         return searchStudent()
+    
+

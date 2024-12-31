@@ -18,7 +18,7 @@ def cadSupplies():
             print('Digite uma palavra')
         
         else:
-            return {'Disciplina': name,'Codigo': idSupplies, 'Carga Horaria': workLoad, 'Professor': ''}
+            return {'Disciplina': name.replace(' ', '_'),'Codigo': idSupplies, 'Carga Horaria': workLoad, 'Professor': ''}
         
 def disciplineCode():
     """Gera uma sequencia de 5 numeros e uma letra aleatoria para a matricula.
@@ -108,4 +108,3 @@ def searchSupplies():
         print('opcao invalida')
         return searchSupplies()
     
-searchSupplies()

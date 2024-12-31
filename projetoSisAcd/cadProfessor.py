@@ -29,7 +29,7 @@ def cadTeacher():
             noneWord(address)
             cel = input('Digite o telefone (apenas numeros): ')
             noneWord(cel)
-            email = input('Digite o Email: ')
+            email = input('Digite o Email: ').lower()
             noneWord(email)
             disciplina = input('Digite a disciplina: ')
             noneWord(disciplina)
@@ -39,7 +39,7 @@ def cadTeacher():
             continue
         finally:
             _ = False
-    return {'Nome': name, 'Matricula': idReg, 'DataAniversario': birthday, 'genero': gender, 'Endereco': address, 'Telefone': cel, 'Email': email, 'disciplina': disciplina}
+    return {'Nome': name.replace(' ', '_'), 'Matricula': idReg, 'DataAniversario': birthday, 'genero': gender, 'Endereco': address, 'Telefone': cel, 'Email': email, 'disciplina': disciplina}
 
 
 def registrationNum():
@@ -104,7 +104,12 @@ def searchTeacher():
         searched = teacher.search(query.Nome.search(searchName))
         if searched == []:
             print('Professor nao encontrado')
-            return searchTeacher()
+            retry = input('quer tentar dnv? (s/n)')
+            if retry.upper() == 'S':
+                system('cls')
+                return searchTeacher()
+            else:
+                return print('Ok, até mais!')
         else:
             print(searched)
     elif chooseItem.upper() == 'M':
@@ -113,7 +118,12 @@ def searchTeacher():
         searched = teacher.search(query.Matricula.search(searchRegistration))
         if searched == []:
             print('Professor nao encontrado')
-            return searchTeacher()
+            retry = input('quer tentar dnv? (s/n)')
+            if retry.upper() == 'S':
+                system('cls')
+                return searchTeacher()
+            else:
+                return print('Ok, até mais!')
         else:
             print(searched)
     elif chooseItem.upper() == 'D':

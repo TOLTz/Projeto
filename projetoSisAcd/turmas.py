@@ -2,6 +2,7 @@ import string
 from os import system
 import random 
 from bd import addData
+from tinydb import TinyDB, Query
 
 def team():
     """ Essa função serve para criar uma turma, ainda sem os alunos
@@ -12,7 +13,7 @@ def team():
     team = input("Digite o nome da turma: ")
     idTeam = code()
     time = input('Qual periodo? (Matutino/Vespertino/Noturno) ')
-    return {'nomeDaTurma': team, 'idDaTurma': idTeam, 'Periodo': time, 'alunos': []}
+    return {'nomeDaTurma': team, 'idDaTurma': idTeam, 'Periodo': time, 'alunos': [], 'Disciplina': []}
 
  
     
@@ -57,3 +58,55 @@ def registrationClass():
                 return print('Ok, até mais!')
             else:
                 continue
+
+            
+def searchClass():
+    query = Query()
+    teacher = TinyDB('disciplinas.json')
+    chooseItem = input('deseja pesquisar por: \nNome/Curso (N), código de turma (C) ou Disciplina (D)? ')
+    if chooseItem.upper() == 'N':
+        searchName = input('digite o nome da turma: ')
+        searchName = searchName.capitalize()
+        searched = teacher.search(query.nomeDaTurma.search(searchName))
+        if searched == []:
+            print('Turma nao encontrada')
+            retry = input('quer tentar dnv? (s/n)')
+            if retry.upper() == 'S':
+                system('cls')
+                return searchClass()
+            else:
+                return print('Ok, até mais!')
+        else:
+            print(searched)
+    elif chooseItem.upper() == 'C':
+        searchRegistration = input('digite o código da turma: ')
+        searchRegistration = searchRegistration.upper()
+        searched = teacher.search(query.Matricula.search(searchRegistration))
+        if searched == []:
+            print('Turma nao encontrada')
+            retry = input('quer tentar dnv? (s/n)')
+            if retry.upper() == 'S':
+                system('cls')
+                return searchClass()
+            else:
+                return print('Ok, até mais!')
+        else:
+            print(searched)
+    elif chooseItem.upper() == 'D':
+        searchSupplies = input('digite a Disciplina da turma: ')
+        searchSupplies = searchSupplies.upper()
+        searched = teacher.search(query.disciplina.search(searchSupplies))
+        if searched == []:
+            print('Turma nao encontrada')
+            retry = input('quer tentar dnv? (s/n)')
+            if retry.upper() == 'S':
+                system('cls')
+                return searchClass()
+            else:
+                return print('Ok, até mais!')
+        else:
+            print(searched)
+    else:
+        print('opcao invalida')
+        return searchClass()
+
