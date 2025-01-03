@@ -28,7 +28,7 @@ def mainReg():
         else:
             system('cls')
             return mainReg()
-    elif todo.lower == 'd':
+    elif todo.lower() == 'd':
         confirmSup()
         retry = input('quer tentar dnv?')
         if retry.upper() == 'N':
@@ -122,3 +122,27 @@ def allocation():
                         continue
 
 
+def delete(args):
+    query = Query()
+    bd = TinyDB(f'{args}.json')
+    
+    if args.lower() == 'turmas':
+        choiceName = input('Qual voce deseja excluir? ')
+        record = bd.get(query.nomeDaTurma == choiceName)
+        if record:
+            print(record)
+            confirm = input('Tem certeza? (s/n): ')
+        if confirm.lower() == 's':
+            bd.remove(query.nomeDaTurma == choiceName)
+        else:
+            return delete(args)
+    elif args.lower() == 'disciplinas':
+        choiceName = input('Qual voce deseja excluir? ').capitalize()
+        record = bd.get(query.Disciplina == choiceName)
+        if record:
+            print(record)
+            confirm = input('Tem certeza? (s/n): ')
+            if confirm.lower() == 's':
+                bd.remove(query.Disciplina == choiceName)
+            else:
+                return delete(args)
