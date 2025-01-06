@@ -38,6 +38,11 @@ def cadStudent():
 
 
 def noneWord(args):
+    """Verifica se o argumento contem palavras caso contrario levanta um erro
+
+    Args:
+        args (str): Palavra para verificar se é uma palavra
+    """
     if args == '':
         raise
 
@@ -94,6 +99,11 @@ def registration():
             continue
 
 def searchStudent():
+    """Funcao que busca um aluno pelo nome ou matricula ou pela turma
+
+    Returns:
+        List : lista de alunos encontrados
+    """
     query = Query()
     student = TinyDB('Aluno.json')
     chooseItem = input('deseja pesquisar por: \nNome (N), Matricula (M) ou Turma (T)? ')

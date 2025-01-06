@@ -6,6 +6,10 @@ from tinydb import TinyDB, Query
 
 
 def cadSupplies():
+    """ Funcao que cadastra uma nova disciplina
+    Returns:
+       Dict : Dicionario com as informações da disciplina
+    """
     idSupplies = disciplineCode()
     _ = True
     while _:
@@ -34,6 +38,10 @@ def disciplineCode():
     return registrationId
 
 def confirmSup():
+    """ Funcao que confirma a disciplina, caso a disciplina seja confirmada,
+    sera adicionada ao banco de dados.
+
+    """
     _ = True
     while _:
         _supplies = cadSupplies()
@@ -56,9 +64,13 @@ def confirmSup():
             else:
                 continue
 
-# confirmSup()
 
 def searchSupplies():
+    """Funcao que pesquisa as disciplinas no banco de dados.
+
+    Returns:
+        List : retorna uma lista com as disciplinas.
+    """
     query = Query()
     Supplies = TinyDB('disciplinas.json')
     chooseItem = input('deseja pesquisar por: \nNome (N), Código (C) ou Professor (P)? ')

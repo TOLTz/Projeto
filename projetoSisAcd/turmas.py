@@ -61,6 +61,11 @@ def registrationClass():
 
             
 def searchClass():
+    """Funcao que busca as turmas no Banco de Dados.
+
+    Returns:
+        List : Retorna uma lista com as Turmas
+    """
     query = Query()
     teacher = TinyDB('disciplinas.json')
     chooseItem = input('deseja pesquisar por: \nNome/Curso (N), código de turma (C) ou Disciplina (D)? ')

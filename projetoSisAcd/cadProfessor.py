@@ -5,9 +5,6 @@ from bd import addData
 from tinydb import TinyDB, Query
 
 
-teacher = [] # lista usada para armazenar os dados dos professores, se der tempo transformar em banco de dados mais complexo
-
-
 def cadTeacher():
     """ Cadastra um novo professor
 
@@ -56,6 +53,11 @@ def registrationNum():
     return registrationId
 
 def noneWord(args):
+    """Verifica se o argumento contem palavras caso contrario levanta um erro
+
+    Args:
+        args (str): Palavra para verificar se é uma palavra
+    """
     if args == '':
         raise
 
@@ -95,6 +97,11 @@ def registrationTeacher():
             continue
         
 def searchTeacher():
+    """Funcao que busca o professor pelo nome, matricula ou pela disciplina
+
+    Returns:
+        List : lista com os dados do professor
+    """
     query = Query()
     teacher = TinyDB('Teacher.json')
     chooseItem = input('deseja pesquisar por: \nNome (N), Matricula (M) ou Disciplina (D)? ')

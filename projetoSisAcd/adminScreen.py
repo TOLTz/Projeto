@@ -7,6 +7,9 @@ from tinydb import TinyDB, Query
 
 
 def mainReg():
+    """
+    Funcao para realizar o registro de dados no banco de dados
+    """
     todo = input('O que deseja registrar? \nAluno, Professor, Turma ou Disciplina? ')
     if  todo.lower() == 'a':
         registration()
@@ -43,6 +46,10 @@ def mainReg():
 
 
 def mainSearch():
+    """
+        funcao exclusiva para executar a busca de dados
+    
+    """
     wish = input('deseja buscar por Aluno (A), Professor (P), Turma (T) ou Disciplina (D)? ')
     if wish.lower() == 'a':
         searchStudent()
@@ -57,6 +64,14 @@ def mainSearch():
         return mainSearch()
 
 def verify(name):
+    """Verifica se o estudante ja esta cadastrado no sistema 
+
+    Args:
+        name (str): Nome do aluno que ira verificar a existencia
+
+    Returns:
+       bool: True or False
+    """
     studentQuery = Query()
     dbStudent = TinyDB('Aluno.json')
     dbTeam = TinyDB('Turmas.json')
@@ -65,6 +80,8 @@ def verify(name):
     return inStudent and inTeam
 
 def allocation():
+    """A funcao serve para alocar alunos em turmas, disciplinas em professores e disciplina em turmas
+    """
     choiceAllo = input('Deseja alocar um professor (P), um aluno (A) ou uma disciplinas (D)? ')
     query = Query()
     if choiceAllo.lower() == 'p':
@@ -123,6 +140,13 @@ def allocation():
 
 
 def delete(args):
+    """A funcao delete é responsavel por deletar uma disciplina ou uma turma 
+
+    Args:
+        args (str): Seleciona Turma ou disciplina, para acessar o banco de dados correto
+
+    Returns:
+    """
     query = Query()
     bd = TinyDB(f'{args}.json')
     
