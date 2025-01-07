@@ -145,7 +145,6 @@ def allocation():
                     else:
                         continue
 
-allocation()
 def delete(args):
     """A funcao delete é responsavel por deletar uma disciplina ou uma turma 
 
