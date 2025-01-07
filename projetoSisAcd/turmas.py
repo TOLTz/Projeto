@@ -67,12 +67,11 @@ def searchClass():
         List : Retorna uma lista com as Turmas
     """
     query = Query()
-    teacher = TinyDB('disciplinas.json')
-    chooseItem = input('deseja pesquisar por: \nNome/Curso (N), código de turma (C) ou Disciplina (D)? ')
+    team = TinyDB('Turmas.json')
+    chooseItem = input('deseja pesquisar por: \nNome/Curso (N), código de turma (C), aluno (A) ou Disciplina (D)? ')
     if chooseItem.upper() == 'N':
         searchName = input('digite o nome da turma: ')
-        searchName = searchName.capitalize()
-        searched = teacher.search(query.nomeDaTurma.search(searchName))
+        searched = team.search(query.nomeDaTurma.search(searchName))
         if searched == []:
             print('Turma nao encontrada')
             retry = input('quer tentar dnv? (s/n)')
@@ -86,7 +85,7 @@ def searchClass():
     elif chooseItem.upper() == 'C':
         searchRegistration = input('digite o código da turma: ')
         searchRegistration = searchRegistration.upper()
-        searched = teacher.search(query.Matricula.search(searchRegistration))
+        searched = team.search(query.Matricula.search(searchRegistration))
         if searched == []:
             print('Turma nao encontrada')
             retry = input('quer tentar dnv? (s/n)')
@@ -99,8 +98,22 @@ def searchClass():
             print(searched)
     elif chooseItem.upper() == 'D':
         searchSupplies = input('digite a Disciplina da turma: ')
-        searchSupplies = searchSupplies.upper()
-        searched = teacher.search(query.disciplina.search(searchSupplies))
+        searchSupplies = searchSupplies.capitalize()
+        searched = team.search(query.Disciplinas.any(searchSupplies))
+        if searched == []:
+            print('Turma nao encontrada')
+            retry = input('quer tentar dnv? (s/n)')
+            if retry.upper() == 'S':
+                system('cls')
+                return searchClass()
+            else:
+                return print('Ok, até mais!')
+        else:
+            print(searched)
+    elif chooseItem.upper() == 'A':
+        searchStudent = input('digite o nome do aluno: ')
+        searchStudent = searchStudent.title().replace(' ', '_')
+        searched = team.search(query.Alunos.any(searchStudent))
         if searched == []:
             print('Turma nao encontrada')
             retry = input('quer tentar dnv? (s/n)')
@@ -114,4 +127,3 @@ def searchClass():
     else:
         print('opcao invalida')
         return searchClass()
-

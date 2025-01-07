@@ -35,20 +35,20 @@ if studentOrTeacher == 'professor' or 'P':
                 continue
         elif choice.lower() == 'd': 
             while _:
-                choice = input('deseja uma disciplina ou uma turma?')
-                if choice.lower() == 'disciplina' or 'd':
+                choicedelete = input('deseja uma disciplina (D) ou uma turma (T)? ')
+                if choicedelete.lower() == 'd':
                     delete('disciplinas')
-                elif choice.lower() == 'turma' or 't':
-                    delete('turmas')
+                elif choicedelete.lower() == 't':
+                    delete('Turmas')
                 else:
                     print('operação invalida')
                     continue
-            retry = input('Quer fazer mais uma ação?(s/n) ')
-            if retry.lower() == 'n':
-                _ = False
-                print('Ok, Até mais ver!')
-            else:
-                continue
+                retry = input('Quer fazer mais uma ação?(s/n) ')
+                if retry.lower() == 'n':
+                    _ = False
+                    print('Ok, Até mais ver!')
+                else:
+                    continue
         elif choice.lower() == 's':
             system('cls')
             print('até logo!')

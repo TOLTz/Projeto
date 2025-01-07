@@ -15,6 +15,7 @@ def cadSupplies():
     while _:
         try:
             name = input('Qual o nome da disciplina? ')
+            name = name.capitalize()
             workLoad = input('Qual a carga horaria? ')
             
         except:

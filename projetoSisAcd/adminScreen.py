@@ -91,7 +91,11 @@ def allocation():
         choiceTea = choiceTea.title().replace(' ', '_')
         choiceSupp = input('Qual disciplina deseja alocar? ')
         supplies.update({'Professor': choiceTea}, query.Disciplina == choiceSupp)
-        teacher.update({'disciplina': choiceSupp}, query.Nome == choiceTea)
+        recordt = teacher.get(query.Nome == choiceTea)
+        if recordt:
+            teaSupp = recordt['disciplina']
+            teaSupp.append(choiceSupp)
+            teacher.update({'disciplina': teaSupp}, query.Nome == choiceTea)
         
     elif choiceAllo.lower() == 'a':
         team = TinyDB('Turmas.json')
@@ -125,8 +129,13 @@ def allocation():
             choiceSupp = input('Qual disciplina deseja alocar? ')
             choiceTea = input('Qual professor deseja alocar? ')
             choiceTea = choiceTea.replace(' ', '_').title()
-            teacher.update({'disciplina': choiceSupp}, query.Nome == choiceTea)
             supplies.update({'Professor': choiceTea}, query.Disciplina == choiceSupp)
+            recordt = teacher.get(query.Nome == choiceTea)
+        if recordt:
+            teaSupp = recordt['disciplina']
+            teaSupp.append(choiceSupp)
+            teacher.update({'disciplina': teaSupp}, query.Nome == choiceTea)
+        
         elif teacherOrClass.lower() == 't':
             team = TinyDB('Turmas.json')
             choiceTeam = input('qual turma deseja alocar a disciplina? ')
@@ -156,7 +165,7 @@ def delete(args):
     query = Query()
     bd = TinyDB(f'{args}.json')
     
-    if args.lower() == 'turmas':
+    if args == 'Turmas':
         choiceName = input('Qual voce deseja excluir? ')
         record = bd.get(query.nomeDaTurma == choiceName)
         if record:
@@ -165,7 +174,11 @@ def delete(args):
         if confirm.lower() == 's':
             bd.remove(query.nomeDaTurma == choiceName)
         else:
-            return delete(args)
+            retry = input('quer deletar mais algo?')
+            if retry.lower() == 's':
+                return delete(args)
+            else:
+                system('cls')
     elif args.lower() == 'disciplinas':
         choiceName = input('Qual voce deseja excluir? ').capitalize()
         record = bd.get(query.Disciplina == choiceName)
@@ -175,4 +188,8 @@ def delete(args):
             if confirm.lower() == 's':
                 bd.remove(query.Disciplina == choiceName)
             else:
-                return delete(args)
+                retry = input('quer deletar mais algo?')
+                if retry.lower() == 's':
+                    return delete(args)
+                else:
+                    system('cls')

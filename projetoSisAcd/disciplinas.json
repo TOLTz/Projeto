@@ -1,16 +1,1 @@
-{
-      "_default": {
-            "1": {
-                  "Disciplina": "Algoritimos",
-                  "Codigo": "N56253",
-                  "Carga Horaria": "80 horas",
-                  "Professor": "Julio_Menezes"
-            },
-            "2": {
-                  "Disciplina": "Matematica",
-                  "Codigo": "P54057",
-                  "Carga Horaria": "60 horas",
-                  "Professor": ""
-            }
-      }
-}
+{"_default": {"1": {"Disciplina": "Algoritimos", "Codigo": "N56253", "Carga Horaria": "80 horas", "Professor": "Julio_Menezes"}, "2": {"Disciplina": "Matematica", "Codigo": "P54057", "Carga Horaria": "60 horas", "Professor": "Kaique_Lemos"}}}

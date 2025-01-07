@@ -29,15 +29,13 @@ def cadTeacher():
             noneWord(cel)
             email = input('Digite o Email: ').lower()
             noneWord(email)
-            disciplina = input('Digite a disciplina: ')
-            noneWord(disciplina)
         except:
             system('cls')
             print("digite uma palavra")
             continue
         finally:
             _ = False
-    return {'Nome': name.replace(' ', '_'), 'Matricula': idReg, 'DataAniversario': birthday, 'genero': gender, 'Endereco': address, 'Telefone': cel, 'Email': email, 'disciplina': ''}
+    return {'Nome': name.replace(' ', '_'), 'Matricula': idReg, 'DataAniversario': birthday, 'genero': gender, 'Endereco': address, 'Telefone': cel, 'Email': email, 'disciplina': []}
 
 
 def registrationNum():
@@ -137,7 +135,7 @@ def searchTeacher():
             print(searched)
     elif chooseItem.upper() == 'D':
         searchSupplies = input('digite a Disciplina do Professor: ')
-        searchSupplies = searchSupplies.upper()
+        searchSupplies = searchSupplies.capitalize()
         searched = teacher.search(query.disciplina.search(searchSupplies))
         if searched == []:
             print('Professor nao encontrado')
