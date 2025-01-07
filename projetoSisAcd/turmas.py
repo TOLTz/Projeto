@@ -79,7 +79,9 @@ def searchClass():
             else:
                 return print('Ok, até mais!')
         else:
-            print(searched)
+            for i in searched:
+                print(i)
+                print()
     elif chooseItem.upper() == 'C':
         searchRegistration = input('digite o código da turma: ')
         searchRegistration = searchRegistration.upper()
@@ -93,7 +95,9 @@ def searchClass():
             else:
                 return print('Ok, até mais!')
         else:
-            print(searched)
+            for i in searched:
+                print(i)
+                print()
     elif chooseItem.upper() == 'D':
         searchSupplies = input('digite a Disciplina da turma: ')
         searchSupplies = searchSupplies.capitalize()
@@ -107,7 +111,9 @@ def searchClass():
             else:
                 return print('Ok, até mais!')
         else:
-            print(searched)
+            for i in searched:
+                print(i)
+                print()
     elif chooseItem.upper() == 'A':
         searchStudent = input('digite o nome do aluno: ')
         searchStudent = searchStudent.title().replace(' ', '_')
@@ -121,7 +127,9 @@ def searchClass():
             else:
                 return print('Ok, até mais!')
         else:
-            print(searched)
+            for i in searched:
+                print(i)
+                print()
     else:
         print('opcao invalida')
         return searchClass()

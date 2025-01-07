@@ -124,7 +124,9 @@ def searchStudent():
                 system('cls')
                 return searchStudent()
         else:
-            print(searched)
+            for i in searched:
+                print(i)
+                print()
     elif chooseItem.upper() == 'M':
         searchRegistration = input('digite a matricula do aluno: ')
         searchRegistration = searchRegistration.upper()
@@ -138,7 +140,9 @@ def searchStudent():
             else:
                 return print('Ok, até mais!')
         else:
-            print(searched)
+            for i in searched:
+                print(i)
+                print()
     elif chooseItem.upper() == 'T':
         searchteam = input('digite a turma do aluno: ')
         searchteam = searchteam.upper()
@@ -152,7 +156,9 @@ def searchStudent():
             else:
                 return print('Ok, até mais!')
         else:
-            print(searched)
+            for i in searched:
+                print(i)
+                print()
     else:
         print('opcao invalida')
         return searchStudent()

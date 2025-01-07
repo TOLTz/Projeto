@@ -63,21 +63,26 @@ def allocation():
     """
     choiceAllo = input('Deseja alocar um professor (P), um aluno (A) ou uma disciplinas (D)? ')
     query = Query()
+    teacher = TinyDB('Teacher.json')
+    supplies = TinyDB('disciplinas.json')
+    team = TinyDB('Turmas.json')
+    db = TinyDB('Aluno.json')
+    
     if choiceAllo.lower() == 'p':
-        teacher = TinyDB('Teacher.json')
-        supplies = TinyDB('disciplinas.json')
         choiceTea = input('Qual professor deseja alocar? ')
         choiceTea = choiceTea.title().replace(' ', '_')
         choiceSupp = input('Qual disciplina deseja alocar? ')
-        supplies.update({'Professor': choiceTea}, query.Disciplina == choiceSupp)
+        recordS = supplies.get(query.Disciplina == choiceSupp)
+        if recordS:
+            suppTea = recordS['Professor']
+            suppTea.append(choiceTea)
+            supplies.update({'Professor': suppTea}, query.Disciplina == choiceSupp)
         recordt = teacher.get(query.Nome == choiceTea)
         if recordt:
             teaSupp = recordt['disciplina']
             teaSupp.append(choiceSupp)
             teacher.update({'disciplina': teaSupp}, query.Nome == choiceTea)
-        
     elif choiceAllo.lower() == 'a':
-        team = TinyDB('Turmas.json')
         choiceTeam = input('qual turma deseja alocar o(s) aluno(s)? ')
         record = team.get(query.nomeDaTurma == choiceTeam)
         _ = True
@@ -90,7 +95,6 @@ def allocation():
                 team.update({'Alunos': stud}, query.nomeDaTurma == choiceTeam)
                 _verify = verify(student)
                 if _verify:
-                    db = TinyDB('Aluno.json')
                     db.update({'Status':'Matriculado'}, query.Nome == student)
                     db.update({'Turma': choiceTeam}, query.Nome == student)           
             confirm = input("Deseja adicionar mais um aluno? (s/n): ")
@@ -103,20 +107,21 @@ def allocation():
     elif choiceAllo.lower() == 'd':
         teacherOrClass = input('Deseja alocar uma disciplina a uma turma (T) ou a um professor(P)? ')
         if teacherOrClass.lower() == 'p':
-            teacher = TinyDB('Teacher.json')
-            supplies = TinyDB('disciplinas.json')
             choiceSupp = input('Qual disciplina deseja alocar? ')
             choiceTea = input('Qual professor deseja alocar? ')
             choiceTea = choiceTea.replace(' ', '_').title()
-            supplies.update({'Professor': choiceTea}, query.Disciplina == choiceSupp)
-            recordt = teacher.get(query.Nome == choiceTea)
-        if recordt:
-            teaSupp = recordt['disciplina']
-            teaSupp.append(choiceSupp)
-            teacher.update({'disciplina': teaSupp}, query.Nome == choiceTea)
+            recordS = supplies.get(query.Disciplina == choiceSupp)
+            if recordS:
+                suppTea = recordS['Professor']
+                suppTea.append(choiceTea)
+                supplies.update({'Professor': suppTea}, query.Disciplina == choiceSupp)
+                recordt = teacher.get(query.Nome == choiceTea)
+            if recordt:
+                teaSupp = recordt['disciplina']
+                teaSupp.append(choiceSupp)
+                teacher.update({'disciplina': teaSupp}, query.Nome == choiceTea)
         
         elif teacherOrClass.lower() == 't':
-            team = TinyDB('Turmas.json')
             choiceTeam = input('qual turma deseja alocar a disciplina? ')
             record = team.get(query.nomeDaTurma == choiceTeam)
             _ = True

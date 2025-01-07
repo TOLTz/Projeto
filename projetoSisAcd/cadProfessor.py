@@ -118,7 +118,9 @@ def searchTeacher():
             else:
                 return print('Ok, até mais!')
         else:
-            print(searched)
+            for i in searched:
+                print(i)
+                print()
     elif chooseItem.upper() == 'M':
         searchRegistration = input('digite a matricula do Professor: ')
         searchRegistration = searchRegistration.upper()
@@ -132,7 +134,9 @@ def searchTeacher():
             else:
                 return print('Ok, até mais!')
         else:
-            print(searched)
+            for i in searched:
+                print(i)
+                print()
     elif chooseItem.upper() == 'D':
         searchSupplies = input('digite a Disciplina do Professor: ')
         searchSupplies = searchSupplies.capitalize()
@@ -141,7 +145,9 @@ def searchTeacher():
             print('Professor nao encontrado')
             return searchTeacher()
         else:
-            print(searched)
+            for i in searched:
+                print(i)
+                print()
     else:
         print('opcao invalida')
         return searchTeacher()

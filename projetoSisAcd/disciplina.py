@@ -3,7 +3,7 @@ from os import system
 import random 
 from bd import addData
 from tinydb import TinyDB, Query
-
+import json
 
 def cadSupplies():
     """ Funcao que cadastra uma nova disciplina
@@ -23,7 +23,7 @@ def cadSupplies():
             print('Digite uma palavra')
         
         else:
-            return {'Disciplina': name.replace(' ', '_'),'Codigo': idSupplies, 'Carga Horaria': workLoad, 'Professor': ''}
+            return {'Disciplina': name.replace(' ', '_'),'Codigo': idSupplies, 'Carga Horaria': workLoad, 'Professor': []}
         
 def disciplineCode():
     """Gera uma sequencia de 5 numeros e uma letra aleatoria para a matricula.
@@ -88,7 +88,9 @@ def searchSupplies():
             else:
                 return print('Ok, até mais!')
         else:
-            print(searched)
+            for i in searched:
+                print(i)
+                print()
     elif chooseItem.upper() == 'C':
         searchCode = input('digite o código da disciplina: ')
         searchCode = searchCode.upper()
@@ -102,22 +104,25 @@ def searchSupplies():
             else:
                 return print('Ok, até mais!')
         else:
-            print(searched)
+            for i in searched:
+                print(i)
+                print()
     elif chooseItem.upper() == 'P':
         searchTeacher = input('digite o nome do Professor: ')
-        searchTeacher = searchTeacher.capitalize()
-        searched = Supplies.search(query.Professor.search(searchTeacher))
+        searchTeacher = searchTeacher.title().replace(' ', '_')
+        searched = Supplies.search(query.Professor.any(searchTeacher))
         if searched == []:
             print('Disciplina nao encontrada')
-            retry = input('quer tentar dnv? (s/n)')
+            retry = input('quer tentar dnv? (s/n) ')
             if retry.upper() == 'S':
                 system('cls')
                 return searchSupplies()
             else:
                 return print('Ok, até mais!')
         else:
-            print(searched)
+            for i in searched:
+                print(i)
+                print()
     else:
         print('opcao invalida')
         return searchSupplies()
-    
