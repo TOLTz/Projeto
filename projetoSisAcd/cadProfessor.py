@@ -72,25 +72,25 @@ def registrationTeacher():
         if confirm.upper() == 'S':
             system('cls')
             addData('Teacher.json', _teacher)
-            retry = input('quer tentar novament? ')
+            retry = input('quer registrar outro professor? ')
             if retry.upper() == 'N':
                 _ = False
                 system('cls')
                 print('ok, até mais!')
             else:
                 system('cls')
-                continue
+                return registrationTeacher()
         elif confirm.upper() == 'N':
             system('cls')
             _ = False
             print('cancelado!')
-            retry = input('quer tentar novament? ')
+            retry = input('quer tentar dnv? ')
             if retry.upper() == 'N':
                 system('cls')
                 print('ok, até mais!')
             else:
                 system('cls')
-                continue
+                return registrationTeacher()
         else:
             print('opcao invalida')
             continue

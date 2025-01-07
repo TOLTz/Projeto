@@ -33,9 +33,7 @@ def code():
     
 def registrationClass():
     """Esta função adiciona as informações da turma e alunos ao Banco de Dados.
-
-    Returns:
-        _type_: _description_
+    
     """
     _ = True
     while _:
@@ -50,14 +48,14 @@ def registrationClass():
             if retry.upper() == 'N':
                 return print('Ok, até mais!')
             else:
-                continue
+                return registrationClass()
         else:
             print('Cadastro cancelado!')
             retry = input('quer tentar novamente? \n[S] [N]: ')
             if retry.upper() == 'N':
                 return print('Ok, até mais!')
             else:
-                continue
+                return registrationClass()
 
             
 def searchClass():

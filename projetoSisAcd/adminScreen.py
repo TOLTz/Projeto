@@ -15,31 +15,10 @@ def mainReg():
         registration()
     elif todo.lower() == 'p':
         registrationTeacher()
-        retry = input('quer tentar dnv?')
-        if retry.upper() == 'N':
-            system('cls')
-            print('ok, até mais!')
-        else:
-            system('cls')
-            return mainReg()
     elif todo.lower() == 't':
         registrationClass()
-        retry = input('quer tentar dnv?')
-        if retry.upper() == 'N':            
-            system('cls')
-            print('ok, até mais!')
-        else:
-            system('cls')
-            return mainReg()
     elif todo.lower() == 'd':
         confirmSup()
-        retry = input('quer tentar dnv?')
-        if retry.upper() == 'N':
-            system('cls')
-            print('ok, até mais!')
-        else:
-            system('cls')
-            return mainReg()
     else:
         print('opção invalida')
         return mainReg()

@@ -1,1 +1,34 @@
-{"_default": {"1": {"nomeDaTurma": "TADS", "idDaTurma": "D4652", "Periodo": "Noturno", "Alunos": ["Marcio_Bimarc", "Lucas_Hernandes"], "Disciplinas": ["Algoritimos"]}, "2": {"nomeDaTurma": "Engenharia", "idDaTurma": "A2592", "Periodo": "Matutino", "Alunos": ["Maria_Silva"], "Disciplinas": ["Algoritimos"]}}}
+{
+      "_default": {
+            "1": {
+                  "nomeDaTurma": "TADS",
+                  "idDaTurma": "D4652",
+                  "Periodo": "Noturno",
+                  "Alunos": [
+                        "Marcio_Bimarc",
+                        "Lucas_Hernandes"
+                  ],
+                  "Disciplinas": [
+                        "Algoritimos"
+                  ]
+            },
+            "2": {
+                  "nomeDaTurma": "Engenharia",
+                  "idDaTurma": "A2592",
+                  "Periodo": "Matutino",
+                  "Alunos": [
+                        "Maria_Silva"
+                  ],
+                  "Disciplinas": [
+                        "Algoritimos"
+                  ]
+            },
+            "3": {
+                  "nomeDaTurma": "Farmacia",
+                  "idDaTurma": "T6771",
+                  "Periodo": "Matutino/Vepertino",
+                  "Alunos": [],
+                  "Disciplinas": []
+            }
+      }
+}

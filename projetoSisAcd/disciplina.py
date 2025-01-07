@@ -59,7 +59,7 @@ def confirmSup():
                 continue
         else:
             print('Cadastro cancelado!')
-            
+            retry = input('quer realizar outro? \n[S] [N]: ')
             if retry.upper() == 'N':
                 return print('Ok, até mais!')
             else:

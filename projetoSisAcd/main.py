@@ -4,11 +4,14 @@ from os import system
 
 print('olá, bem vindo ao sistema academico!')
 studentOrTeacher = input('Você é um professor (P) ou um aluno (A)? ')
+system('cls')
 _ = True
 if studentOrTeacher == 'professor' or 'P':
     while _:
+        system('cls')
         print('ok, você está logado como professor')
         choice = input('Qual operação deseja fazer? \nPesquisa (P), Registrar (R), Alocar (A), Deletar (D) ou Sair (S)? ')
+        system('cls')
         if choice.lower() == 'p':
             mainSearch()
             retry = input('Quer fazer mais uma ação?(s/n) ')

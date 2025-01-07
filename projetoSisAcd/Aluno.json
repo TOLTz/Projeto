@@ -1,1 +1,59 @@
-{"_default": {"1": {"Nome": "Lucas_Hernandes", "Matricula": "69744274-A", "DataAniversario": "24/09/2009", "genero": "M", "Endereco": "Rua Olivio Segatto 120", "Telefone": "739988899", "Email": "lucashernandess001@gmail.com", "Status": "Matriculado", "Turma": "TADS"}, "2": {"Nome": "Marcio_Bimarc", "Matricula": "85634215-E", "DataAniversario": "07/01/2000", "genero": "M", "Endereco": "Rua Tiradentes n1000", "Telefone": "1899666819", "Email": "mbola0192@gmail.com", "Status": "Matriculado", "Turma": "TADS"}, "3": {"Nome": "Maria_Silva", "Matricula": "09498967-Z", "DataAniversario": "09/09/2009", "genero": "F", "Endereco": "Rua 9 N99", "Telefone": "1999999999", "Email": "maria9silva@gmail.com", "Status": "Matriculado", "Turma": "Engenharia"}}}
+{
+      "_default": {
+            "1": {
+                  "Nome": "Lucas_Hernandes",
+                  "Matricula": "69744274-A",
+                  "DataAniversario": "24/09/2009",
+                  "genero": "M",
+                  "Endereco": "Rua Olivio Segatto 120",
+                  "Telefone": "739988899",
+                  "Email": "lucashernandess001@gmail.com",
+                  "Status": "Matriculado",
+                  "Turma": "TADS"
+            },
+            "2": {
+                  "Nome": "Marcio_Bimarc",
+                  "Matricula": "85634215-E",
+                  "DataAniversario": "07/01/2000",
+                  "genero": "M",
+                  "Endereco": "Rua Tiradentes n1000",
+                  "Telefone": "1899666819",
+                  "Email": "mbola0192@gmail.com",
+                  "Status": "Matriculado",
+                  "Turma": "TADS"
+            },
+            "3": {
+                  "Nome": "Maria_Silva",
+                  "Matricula": "09498967-Z",
+                  "DataAniversario": "09/09/2009",
+                  "genero": "F",
+                  "Endereco": "Rua 9 N99",
+                  "Telefone": "1999999999",
+                  "Email": "maria9silva@gmail.com",
+                  "Status": "Matriculado",
+                  "Turma": "Engenharia"
+            },
+            "4": {
+                  "Nome": "Louis_Victoria",
+                  "Matricula": "13278802-A",
+                  "DataAniversario": "01/01/2001",
+                  "genero": "f",
+                  "Endereco": "Rua 1 n011",
+                  "Telefone": "479981728399",
+                  "Email": "louisvitton@gmail.com",
+                  "Status": "",
+                  "Turma": ""
+            },
+            "5": {
+                  "Nome": "Pedro_Alves",
+                  "Matricula": "43138073-I",
+                  "DataAniversario": "21/03/2005",
+                  "genero": "M",
+                  "Endereco": "Rua alameda belgica",
+                  "Telefone": "119322239848",
+                  "Email": "pedrolal21@gmail.com",
+                  "Status": "",
+                  "Turma": ""
+            }
+      }
+}

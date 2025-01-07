@@ -75,7 +75,7 @@ def registration():
             system('cls')
             addData('Aluno.json', _student)
             print('salvo com sucesso')
-            retry = input('quer tentar dnv? ')
+            retry = input('quer registrar outro aluno? ')
             if retry.upper() == 'N':
                 _ = False
                 system('cls')
@@ -87,7 +87,7 @@ def registration():
             system('cls')
             _ = False
             print('cancelado!')
-            retry = input('quer tentar dnv? ')
+            retry = input('quer tentar de novo? ')
             if retry.upper() == 'N':
                 _ = False
                 system('cls')
@@ -96,6 +96,7 @@ def registration():
                 system('cls')
                 continue
         else:
+            system('cls')
             print('opcao invalida')
             continue
 
