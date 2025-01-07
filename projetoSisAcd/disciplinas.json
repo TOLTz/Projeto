@@ -1,1 +1,16 @@
-{"_default": {"1": {"Disciplina": "Matematica", "Codigo": "E07391", "Carga Horaria": "50 Horas", "Professor": "Lucas Moura"}}}
+{
+      "_default": {
+            "1": {
+                  "Disciplina": "Algoritimos",
+                  "Codigo": "N56253",
+                  "Carga Horaria": "80 horas",
+                  "Professor": "Julio_Menezes"
+            },
+            "2": {
+                  "Disciplina": "Matematica",
+                  "Codigo": "P54057",
+                  "Carga Horaria": "60 horas",
+                  "Professor": ""
+            }
+      }
+}

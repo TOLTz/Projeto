@@ -17,6 +17,7 @@ def cadTeacher():
         try:
             name = input('Digite o nome: ')
             noneWord(name)
+            name = name.title()
             print(f'Matricula: {idReg}')
             birthday = input('Digite a data de nascimento: ')
             noneWord(birthday)
@@ -36,7 +37,7 @@ def cadTeacher():
             continue
         finally:
             _ = False
-    return {'Nome': name.replace(' ', '_'), 'Matricula': idReg, 'DataAniversario': birthday, 'genero': gender, 'Endereco': address, 'Telefone': cel, 'Email': email, 'disciplina': disciplina}
+    return {'Nome': name.replace(' ', '_'), 'Matricula': idReg, 'DataAniversario': birthday, 'genero': gender, 'Endereco': address, 'Telefone': cel, 'Email': email, 'disciplina': ''}
 
 
 def registrationNum():
@@ -107,7 +108,8 @@ def searchTeacher():
     chooseItem = input('deseja pesquisar por: \nNome (N), Matricula (M) ou Disciplina (D)? ')
     if chooseItem.upper() == 'N':
         searchName = input('digite o nome do Professor: ')
-        searchName = searchName.capitalize()
+        searchName = searchName.title()
+        searchName = searchName.replace(' ', '_')
         searched = teacher.search(query.Nome.search(searchName))
         if searched == []:
             print('Professor nao encontrado')
@@ -145,3 +147,4 @@ def searchTeacher():
     else:
         print('opcao invalida')
         return searchTeacher()
+

@@ -17,6 +17,7 @@ def cadStudent():
         try:
             name = input('Digite o nome: ')
             noneWord(name)
+            name = name.title()
             print(f'Matricula: {idReg}')
             birthday = input('Digite a data de nascimento: ')
             noneWord(birthday)
@@ -80,8 +81,8 @@ def registration():
                 system('cls')
                 print('ok, até mais!')
             else:
-                system('cls')
-                continue
+                return cadStudent()
+                
         elif confirm.upper() == 'N':
             system('cls')
             _ = False
@@ -110,7 +111,7 @@ def searchStudent():
     if chooseItem.upper() == 'N':
         searchName = input('digite o nome do aluno: ')
         searchName = searchName.replace(' ', '_')
-        searchName = searchName.capitalize()
+        searchName = searchName.title()
         searched = student.search(query.Nome.search(searchName))
         if searched == []:
             print('aluno nao encontrado')

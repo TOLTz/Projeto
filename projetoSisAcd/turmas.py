@@ -13,7 +13,7 @@ def team():
     team = input("Digite o nome da turma: ")
     idTeam = code()
     time = input('Qual periodo? (Matutino/Vespertino/Noturno) ')
-    return {'nomeDaTurma': team, 'idDaTurma': idTeam, 'Periodo': time, 'alunos': [], 'Disciplina': []}
+    return {'nomeDaTurma': team, 'idDaTurma': idTeam, 'Periodo': time, 'Alunos': [], 'Disciplinas': []}
 
  
     

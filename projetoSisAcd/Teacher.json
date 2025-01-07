@@ -1,14 +1,1 @@
-{
-    "_default": {
-        "1": {
-            "Nome": "Lucas Moura",
-            "Matricula": "A314784",
-            "DataAniversario": "07/10/1922",
-            "genero": "M",
-            "Endereco": "Rua Getulio Vargas N04",
-            "Telefone": "6790017719",
-            "Email": "lulumomo@hotmail.com",
-            "disciplina": ""
-        }
-    }
-}
+{"_default": {"1": {"Nome": "Julio_Menezes", "Matricula": "U881010", "DataAniversario": "08/11/1991", "genero": "M", "Endereco": "Avenida Paulista", "Telefone": "11992928355", "Email": "manomenezes@gmail.com", "disciplina": "Algoritimos"}}}

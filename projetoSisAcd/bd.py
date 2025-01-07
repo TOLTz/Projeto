@@ -7,5 +7,5 @@ def addData(file, dict):
         file (str): Nome do banco de dados, com a extensao json
         dict (dict): Dicionario com os dados a serem adicionados
     """
-    new = TinyDB(file, indent=4)
+    new = TinyDB(file, indent=6)
     new.insert(dict)

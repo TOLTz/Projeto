@@ -10,7 +10,7 @@ def mainReg():
     """
     Funcao para realizar o registro de dados no banco de dados
     """
-    todo = input('O que deseja registrar? \nAluno, Professor, Turma ou Disciplina? ')
+    todo = input('O que deseja registrar? \nAluno (A), Professor (P), Turma (T) ou Disciplina (D)? ')
     if  todo.lower() == 'a':
         registration()
     elif todo.lower() == 'p':
@@ -22,7 +22,7 @@ def mainReg():
         else:
             system('cls')
             return mainReg()
-    elif todo.lower == 't':
+    elif todo.lower() == 't':
         registrationClass()
         retry = input('quer tentar dnv?')
         if retry.upper() == 'N':            
@@ -85,10 +85,13 @@ def allocation():
     choiceAllo = input('Deseja alocar um professor (P), um aluno (A) ou uma disciplinas (D)? ')
     query = Query()
     if choiceAllo.lower() == 'p':
+        teacher = TinyDB('Teacher.json')
         supplies = TinyDB('disciplinas.json')
         choiceTea = input('Qual professor deseja alocar? ')
+        choiceTea = choiceTea.title().replace(' ', '_')
         choiceSupp = input('Qual disciplina deseja alocar? ')
         supplies.update({'Professor': choiceTea}, query.Disciplina == choiceSupp)
+        teacher.update({'disciplina': choiceSupp}, query.Nome == choiceTea)
         
     elif choiceAllo.lower() == 'a':
         team = TinyDB('Turmas.json')
@@ -97,10 +100,11 @@ def allocation():
         _ = True
         while _:
             student = input("Digite o nome do aluno: ").replace(' ', '_')
+            student = student.title()
             if record:
-                stu = record['Alunos']
-                stu.append(student)
-                team.update({'Alunos': stu}, query.nomeDaTurma == choiceTeam)
+                stud = record['Alunos']
+                stud.append(student)
+                team.update({'Alunos': stud}, query.nomeDaTurma == choiceTeam)
                 _verify = verify(student)
                 if _verify:
                     db = TinyDB('Aluno.json')
@@ -112,13 +116,16 @@ def allocation():
                 system('cls')
             else:
                 continue
-            
+           
     elif choiceAllo.lower() == 'd':
         teacherOrClass = input('Deseja alocar uma disciplina a uma turma (T) ou a um professor(P)? ')
         if teacherOrClass.lower() == 'p':
+            teacher = TinyDB('Teacher.json')
             supplies = TinyDB('disciplinas.json')
-            choiceTea = input('Qual professor deseja alocar? ')
             choiceSupp = input('Qual disciplina deseja alocar? ')
+            choiceTea = input('Qual professor deseja alocar? ')
+            choiceTea = choiceTea.replace(' ', '_').title()
+            teacher.update({'disciplina': choiceSupp}, query.Nome == choiceTea)
             supplies.update({'Professor': choiceTea}, query.Disciplina == choiceSupp)
         elif teacherOrClass.lower() == 't':
             team = TinyDB('Turmas.json')
@@ -138,7 +145,7 @@ def allocation():
                     else:
                         continue
 
-
+allocation()
 def delete(args):
     """A funcao delete é responsavel por deletar uma disciplina ou uma turma 
 

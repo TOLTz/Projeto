@@ -1,1 +1,1 @@
-{"_default": {"1": {"nomeDaTurma": "TADS", "id da turma": "W2633", "Periodo": "Noturno", "Alunos": ["Marcio_Menezes", "Rayssa_Raiana", "Jose_Bezerra", "Antonio_Marcos_Alves", "Rayssa_Raiana"], "Disciplinas": ["Matematica"]}}}
+{"_default": {"1": {"nomeDaTurma": "TADS", "idDaTurma": "D4652", "Periodo": "Noturno", "Alunos": ["Marcio_Bimarc", "Lucas_Hernandes"], "Disciplinas": ["Algoritimos"]}, "2": {"nomeDaTurma": "Engenharia", "idDaTurma": "A2592", "Periodo": "Matutino", "Alunos": ["Maria_Silva"], "Disciplinas": ["Algoritimos"]}}}
