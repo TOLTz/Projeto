@@ -3,16 +3,16 @@ from os import system
 import random 
 from bd import addData
 from tinydb import TinyDB, Query
-
+import inputVerify
 def team():
     """ Essa função serve para criar uma turma, ainda sem os alunos
 
     Returns:
         _type_: dict
     """
-    team = input("Digite o nome da turma: ")
+    team = inputVerify.getInput("Digite o nome da turma: ", inputVerify.noneWord, 'Voce nao digitou um nome')
     idTeam = code()
-    time = input('Qual periodo? (Matutino/Vespertino/Noturno) ')
+    time = inputVerify.getInput('Qual periodo? (Matutino/Vespertino/Noturno) ', inputVerify.noneWord, 'Voce nao digitou um periodo')
     return {'nomeDaTurma': team, 'idDaTurma': idTeam, 'Periodo': time, 'Alunos': [], 'Disciplinas': []}
 
  
