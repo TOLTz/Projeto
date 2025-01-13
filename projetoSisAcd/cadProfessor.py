@@ -3,7 +3,7 @@ import string
 import random
 from bd import addData
 from tinydb import TinyDB, Query
-
+import inputVerify
 
 def cadTeacher():
     """ Cadastra um novo professor
@@ -14,28 +14,13 @@ def cadTeacher():
     _ = True
     idReg = registrationNum()
     while _:
-        try:
-            name = input('Digite o nome: ')
-            noneWord(name)
-            name = name.title()
-            print(f'Matricula: {idReg}')
-            birthday = input('Digite a data de nascimento: ')
-            noneWord(birthday)
-            gender = input('Digite o genero: ')
-            noneWord(gender)
-            address = input('Digite o Endereco: ')
-            noneWord(address)
-            cel = input('Digite o telefone (apenas numeros): ')
-            noneWord(cel)
-            email = input('Digite o Email: ').lower()
-            noneWord(email)
-        except:
-            system('cls')
-            print("digite uma palavra")
-            continue
-        finally:
-            _ = False
-    return {'Nome': name.replace(' ', '_'), 'Matricula': idReg, 'DataAniversario': birthday, 'genero': gender, 'Endereco': address, 'Telefone': cel, 'Email': email, 'disciplina': []}
+            name = inputVerify.getInput('Digite o nome: ', inputVerify.noneWord, 'Voce nao digitou um nome')
+            birthday = inputVerify.getInput('Digite a data de nascimento: ', inputVerify.digit, 'Voce nao digitou uma data de nascimento')
+            email = inputVerify.getInput('Digite o email: ', inputVerify.isEmail, 'Voce nao digitou um email valido')
+            gender = inputVerify.getInput('Digite o genero (M/F): ', inputVerify.noneWord, 'Voce nao digitou um genero')
+            address = inputVerify.getInput('Digite o endereco: ', inputVerify.noneWord, 'Voce nao digitou um endereco')
+            cel = inputVerify.getInput('Digite o celular: ', inputVerify.celVerify, 'Voce nao digitou um numero decelular')
+    return {'Nome': name.replace(' ', '_').title(), 'Matricula': idReg, 'DataAniversario': birthday, 'genero': gender, 'Endereco': address, 'Telefone': cel, 'Email': email.lower(), 'disciplina': []}
 
 
 def registrationNum():
@@ -50,15 +35,6 @@ def registrationNum():
     letterUpper = random.choice(string.ascii_uppercase) # ascii_uppercase gera letras maiusculas
     registrationId = letterUpper + num 
     return registrationId
-
-def noneWord(args):
-    """Verifica se o argumento contem palavras caso contrario levanta um erro
-
-    Args:
-        args (str): Palavra para verificar se é uma palavra
-    """
-    if args == '':
-        raise
 
 def registrationTeacher():
     """Adiciona um novo professor ao sistema, com os dados fornecidos pela funcao

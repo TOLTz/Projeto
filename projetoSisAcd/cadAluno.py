@@ -3,7 +3,7 @@ import string
 import random
 from bd import addData
 from tinydb import Query, TinyDB
-
+import inputVerify
 
 def cadStudent():
     """ Cadastra um novo aluno
@@ -14,28 +14,14 @@ def cadStudent():
     _ = True
     idReg = registrationNum()
     while _:
-        try:
-            name = input('Digite o nome: ')
-            noneWord(name)
-            name = name.title()
-            print(f'Matricula: {idReg}')
-            birthday = input('Digite a data de nascimento: ')
-            noneWord(birthday)
-            gender = input('Digite o genero: ')
-            noneWord(gender)
-            address = input('Digite o Endereco: ')
-            noneWord(address)
-            cel = input('Digite o telefone (apenas numeros): ')
-            noneWord(cel)
-            email = input('Digite o Email: ').lower()
-            noneWord(email)
-        except:
-            system('cls')
-            print('Digite uma palavra')
-            continue
-        else:
-            _ = False
-    return {'Nome': name.replace(' ', '_'), 'Matricula': idReg, 'DataAniversario': birthday, 'genero': gender, 'Endereco': address, 'Telefone': cel, 'Email': email, 'Status': '', 'Turma': ''}
+
+            name = inputVerify.getInput('Digite o nome: ', inputVerify.noneWord, 'Voce nao digitou um nome')
+            birthday = inputVerify.getInput('Digite a data de nascimento: ', inputVerify.digit, 'Voce nao digitou uma data de nascimento')
+            email = inputVerify.getInput('Digite o email: ', inputVerify.isEmail, 'Voce nao digitou um email valido')
+            gender = inputVerify.getInput('Digite o genero (M/F): ', inputVerify.noneWord, 'Voce nao digitou um genero')
+            address = inputVerify.getInput('Digite o endereco: ', inputVerify.noneWord, 'Voce nao digitou um endereco')
+            cel = inputVerify.getInput('Digite o celular: ', inputVerify.celVerify, 'Voce nao digitou um numero decelular')
+    return {'Nome': name.replace(' ', '_').title(), 'Matricula': idReg, 'DataAniversario': birthday, 'genero': gender, 'Endereco': address, 'Telefone': cel, 'Email': email, 'Status': '', 'Turma': ''}
 
 
 def noneWord(args):

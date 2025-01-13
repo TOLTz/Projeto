@@ -3,7 +3,7 @@ from os import system
 import random 
 from bd import addData
 from tinydb import TinyDB, Query
-import json
+import inputVerify
 
 def cadSupplies():
     """ Funcao que cadastra uma nova disciplina
@@ -14,16 +14,16 @@ def cadSupplies():
     _ = True
     while _:
         try:
-            name = input('Qual o nome da disciplina? ')
-            name = name.capitalize()
-            workLoad = input('Qual a carga horaria? ')
+            name = inputVerify.getInput('Qual o nome da disciplina? ', inputVerify.noneWord, 'Voce nao digitou um nome')
+            workLoad = inputVerify.getInput('Qual a carga horaria? ', inputVerify.digit, 'Voce nao digitou um numero')
+            workLoad = (f'{workLoad } horas')
             
         except:
             system('cls')
             print('Digite uma palavra')
         
         else:
-            return {'Disciplina': name.replace(' ', '_'),'Codigo': idSupplies, 'Carga Horaria': workLoad, 'Professor': []}
+            return {'Disciplina': name.replace(' ', '_').capitalize(),'Codigo': idSupplies, 'Carga Horaria': workLoad, 'Professor': []}
         
 def disciplineCode():
     """Gera uma sequencia de 5 numeros e uma letra aleatoria para a matricula.
