@@ -16,7 +16,7 @@ def cadStudent():
     while _:
 
             name = inputVerify.getInput('Digite o nome: ', inputVerify.noneWord, 'Voce nao digitou um nome')
-            birthday = inputVerify.getInput('Digite a data de nascimento: ', inputVerify.digit, 'Voce nao digitou uma data de nascimento')
+            birthday = inputVerify.getInput('Digite a data de nascimento: ', inputVerify.isdate, 'Voce nao digitou uma data de nascimento valida')
             email = inputVerify.getInput('Digite o email: ', inputVerify.isEmail, 'Voce nao digitou um email valido')
             gender = inputVerify.getInput('Digite o genero (M/F): ', inputVerify.noneWord, 'Voce nao digitou um genero')
             address = inputVerify.getInput('Digite o endereco: ', inputVerify.noneWord, 'Voce nao digitou um endereco')
